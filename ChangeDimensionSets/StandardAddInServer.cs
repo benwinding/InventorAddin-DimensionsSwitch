@@ -22,7 +22,8 @@ namespace InvAddIn
         private RibbonPanel m_DimensionSwitch_ribbonPanel;
 
         // buttons
-        private OrdToChainButton m_convertOrdinateToChain;
+        private Button m_convertOrdinateToChain;
+        private Button m_convertChainToOrdinate;
 
         public StandardAddInServer()
         {
@@ -46,7 +47,8 @@ namespace InvAddIn
                 var addInClsidString = GetGUIDForThisClass();
 
                 //create icons from files
-                var ordToChainIcon = new Icon(GetType(), "ord-to-chain.ico");
+                var ordToChainIcon = new Icon(GetType(), "btn-ord-to-chain.ico");
+                var chainToOrdIcon = new Icon(GetType(), "btn-chain-to-ord.ico");
 
                 //create buttons
                 var identifierPrefix = "Autodesk:ChangeDimensionSets:";
@@ -61,11 +63,23 @@ namespace InvAddIn
                     ordToChainIcon,
                     ButtonDisplayEnum.kDisplayTextInLearningMode);
 
+                m_convertChainToOrdinate = new ChainToOrdButton(
+                    "Chain To Ordinate",
+                    identifierPrefix + "ChainToOrdButton",
+                    CommandTypesEnum.kShapeEditCmdType,
+                    addInClsidString,
+                    "Chain To Ordinate",
+                    "Convert Chain To Ordinate Dimension",
+                    chainToOrdIcon,
+                    chainToOrdIcon,
+                    ButtonDisplayEnum.kDisplayTextInLearningMode);
+
                 //create command category
                 var catName = "Dimensions";
                 var commandCategory = m_inventorApplication.CommandManager.CommandCategories.Add(catName, 
                     identifierPrefix + "ChangeDimensionSetsCategory", addInClsidString);
                 commandCategory.Add(m_convertOrdinateToChain.ButtonDefinition);
+                commandCategory.Add(m_convertChainToOrdinate.ButtonDefinition);
 
                 if (firstTime == true)
                 {
@@ -83,6 +97,7 @@ namespace InvAddIn
 
                         //add buttons to toolbar
                         commandBar.Controls.AddButton(m_convertOrdinateToChain.ButtonDefinition);
+                        commandBar.Controls.AddButton(m_convertChainToOrdinate.ButtonDefinition);
 
                         //Get the 2d sketch environment base object
                         Inventor.Environment partSketchEnvironment =
@@ -99,7 +114,7 @@ namespace InvAddIn
 
                         //get the tabls associated with part ribbon
                         var ribbonTabs = partRibbon.RibbonTabs;
-                        var partSketchRibbonTab = ribbonTabs["id_TabPlaceViews"];
+                        var partSketchRibbonTab = ribbonTabs["id_TabAnnotate"];
 
                         //create a new panel with the tab
                         var ribbonPanels = partSketchRibbonTab.RibbonPanels;
@@ -111,6 +126,7 @@ namespace InvAddIn
 
                         //add the buttons to the ribbon panel
                         partSketchSlotRibbonPanelCtrls.AddButton(m_convertOrdinateToChain.ButtonDefinition);
+                        partSketchSlotRibbonPanelCtrls.AddButton(m_convertChainToOrdinate.ButtonDefinition);
                     }
                 }
             }

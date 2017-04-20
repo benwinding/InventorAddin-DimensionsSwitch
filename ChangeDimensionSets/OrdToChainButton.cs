@@ -41,12 +41,9 @@ namespace InvAddIn
 
             var ordinateDimensionSets = selectedLinearInChainSet
                 .Select(x => x.OrdinateDimensionSet)
-                .Distinct()
-                .ToList();
-            var ordinateCount = ordinateDimensionSets.Count;
-            for (var i=0; i<ordinateCount; i++)
+                .Distinct().ToList();
+            foreach (var ordinateDimensionSet in ordinateDimensionSets)
             {
-                var ordinateDimensionSet = ordinateDimensionSets[i];
                 ProccessOrdinateSet(drawing.ActiveSheet, ordinateDimensionSet);
                 ordinateDimensionSet.Delete();
             }
@@ -61,53 +58,6 @@ namespace InvAddIn
             drawingActiveSheet.DrawingDimensions.ChainDimensionSets.Add(intents, placementPoint, dimensionType);
         }
 
-        private void ConvertChainSetToOrdinateSet()
-        {
-            var drawing = InventorApplication.ActiveDocument as DrawingDocument;
-            if (drawing == null)
-                return;
-            if (drawing.SelectSet.Count == 0)
-                return;
-            var selectedLinearInChainSet = drawing.SelectSet
-                .OfType<LinearGeneralDimension>()
-                .Where(d => d.IsChainSetMember)
-                .ToList();
-            if (!selectedLinearInChainSet.Any())
-                return;
-
-            var chainSets = selectedLinearInChainSet
-                .Select(x => x.ChainDimensionSet)
-                .Distinct();
-
-            foreach (var chainSet in chainSets)
-            {
-                ProccessChainSet(drawing.ActiveSheet, chainSet);
-            }
-        }
-
-        private void ProccessChainSet(Sheet drawingActiveSheet, ChainDimensionSet chainSet)
-        {
-            var intents = GetIntentsFromChainSet(chainSet);
-            var placementPoint = (chainSet.Members[1] as LinearGeneralDimension).Text.Origin;
-            var dimensionType = chainSet.DimensionType;
-
-            drawingActiveSheet.DrawingDimensions.OrdinateDimensionSets.Add(intents, placementPoint, dimensionType);
-        }
-
-        private ObjectCollection GetIntentsFromChainSet(ChainDimensionSet chainSet)
-        {
-            var memberCount = chainSet.Members.Count;
-            var collection = InventorApplication.TransientObjects.CreateObjectCollection();
-            for (int i = 1; i <= memberCount; i++)
-            {
-                var intent = (chainSet.Members[i] as LinearGeneralDimension).IntentOne;
-                collection.Add(intent);
-            }
-            var intentLast = (chainSet.Members[memberCount] as LinearGeneralDimension).IntentTwo;
-            collection.Add(intentLast);
-            return collection;
-        }
-
         private ObjectCollection GetIntentsFromOrdinatesSet(OrdinateDimensionSet chainSet)
         {
             var memberCount = chainSet.Members.Count;
@@ -117,8 +67,6 @@ namespace InvAddIn
                 var intent = (chainSet.Members[i] as OrdinateDimension).Intent;
                 collection.Add(intent);
             }
-//            var intentLast = (chainSet.Members[memberCount] as OrdinateDimension).Intent;
-  //          collection.Add(intentLast);
             return collection;
         }
 

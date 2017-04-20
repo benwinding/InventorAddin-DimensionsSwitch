@@ -97,6 +97,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChainToOrdButton.cs" />
     <Compile Include="OrdToChainButton.cs" />
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -116,7 +117,8 @@
     <None Include="Readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ord-to-chain.ico" />
+    <EmbeddedResource Include="btn-chain-to-ord.ico" />
+    <EmbeddedResource Include="btn-ord-to-chain.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
