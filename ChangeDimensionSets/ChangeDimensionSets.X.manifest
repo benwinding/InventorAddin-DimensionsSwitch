@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+
+  <assemblyIdentity name="ChangeDimensionSets" version="1.0.0.0"></assemblyIdentity>
+
+  <clrClass clsid="{5698ae52-ba87-4b3f-b9f7-5871430abda3}" progid="ChangeDimensionSets.StandardAddInServer" threadingModel="Both" name="ChangeDimensionSets.StandardAddInServer" runtimeVersion=""></clrClass>
+
+  <file name="ChangeDimensionSets.dll" hashalg="SHA1"></file>
+
+</assembly>
