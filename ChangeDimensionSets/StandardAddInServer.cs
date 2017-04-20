@@ -127,9 +127,7 @@ namespace InvAddIn
             // This method is called by Inventor when the AddIn is unloaded.
             // The AddIn will be unloaded either manually by the user or
             // when the Inventor session is terminated
-
             
-
             // Release objects.
             m_inventorApplication = null;
 

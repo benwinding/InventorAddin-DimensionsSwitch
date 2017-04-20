@@ -15,7 +15,6 @@ namespace InvAddIn
         private static Inventor.Application m_inventorApplication;
 
         private ButtonDefinition m_buttonDefinition;
-
         private ButtonDefinitionSink_OnExecuteEventHandler ButtonDefinition_OnExecuteEventDelegate;
 
         #endregion
