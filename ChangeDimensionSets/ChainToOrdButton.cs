@@ -50,10 +50,17 @@ namespace InvAddIn
         private void ProccessChainSet(Sheet drawingActiveSheet, ChainDimensionSet chainSet)
         {
             var intents = GetIntentsFromChainSet(chainSet);
-            var placementPoint = (chainSet.Members[1] as LinearGeneralDimension).Text.Origin;
+            var placementPoint = GetPlacementPoint(chainSet);
             var dimensionType = chainSet.DimensionType;
 
             drawingActiveSheet.DrawingDimensions.OrdinateDimensionSets.Add(intents, placementPoint, dimensionType);
+        }
+
+        private Point2d GetPlacementPoint(ChainDimensionSet chainSet)
+        {
+            var line = (chainSet.Members[1] as LinearGeneralDimension).ExtensionLineOne;
+            var segment = line as LineSegment2d;
+            return segment.EndPoint;
         }
 
         private ObjectCollection GetIntentsFromChainSet(ChainDimensionSet chainSet)

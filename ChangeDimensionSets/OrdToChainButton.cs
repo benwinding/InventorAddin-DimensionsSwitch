@@ -52,10 +52,16 @@ namespace InvAddIn
         private void ProccessOrdinateSet(Sheet drawingActiveSheet, OrdinateDimensionSet ordinateSet)
         {
             var intents = GetIntentsFromOrdinatesSet(ordinateSet);
-            var placementPoint = (ordinateSet.Members[1] as OrdinateDimension).Text.Origin;
+            var placementPoint = GetPlacementPoint(ordinateSet);
             var dimensionType = ordinateSet.DimensionType;
 
             drawingActiveSheet.DrawingDimensions.ChainDimensionSets.Add(intents, placementPoint, dimensionType);
+        }
+
+        private Point2d GetPlacementPoint(OrdinateDimensionSet ordinateSet)
+        {
+            var origin = ordinateSet.Members[1];
+            return origin.Text.Origin;
         }
 
         private ObjectCollection GetIntentsFromOrdinatesSet(OrdinateDimensionSet chainSet)

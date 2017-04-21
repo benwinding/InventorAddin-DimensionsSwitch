@@ -23,5 +23,10 @@ object first = selectSet[1];
 WriteProps(first);
 var ordinate = (first as OrdinateDimension);
 WriteProps(ordinate.OrdinateDimensionSet);
-var ordinateSet = (ordinate.OrdinateDimensionSet as OrdinateDimension);
-WriteProps(ordinateSet.Members[1]);
+var ordinateSet = (ordinate.OrdinateDimensionSet as OrdinateDimensionSet);
+WriteProps(ordinateSet.OriginMember);
+var OriginMember = ordinateSet.OriginMember as OrdinateDimension;
+WriteProps(OriginMember.Intent);
+
+var Member2 = ordinateSet.Members[2] as OrdinateDimension;
+WriteProps(Member2);
