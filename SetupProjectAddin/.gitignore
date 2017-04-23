@@ -1,0 +1,3 @@
+## Simply include the release folder so the msi package is available in source control
+
+!Release/**
