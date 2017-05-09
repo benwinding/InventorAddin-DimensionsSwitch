@@ -119,6 +119,7 @@
     <EmbeddedResource Include="btn-ord-to-chain.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Documentation.txt" />
     <Content Include="ReferenceDDLs\Autodesk.Inventor.Interop.dll" />
     <Content Include="ReferenceDDLs\stdole.dll" />
   </ItemGroup>
