@@ -1,0 +1,14 @@
+<Addin Type="Standard">
+  <!--Created for Autodesk Inventor Version 20.0-->
+  <ClassId>{5698ae52-ba87-4b3f-b9f7-5871430abda3}</ClassId>
+  <ClientId>{5698ae52-ba87-4b3f-b9f7-5871430abda3}</ClientId>
+  <DisplayName>ChangeDimensionSets</DisplayName>
+  <Description>ChangeDimensionSets</Description>
+  <Assembly>ChangeDimensionSets.dll</Assembly>
+  <LoadOnStartUp>1</LoadOnStartUp>
+  <UserUnloadable>1</UserUnloadable>
+  <Hidden>0</Hidden>
+  <SupportedSoftwareVersionGreaterThan>19..</SupportedSoftwareVersionGreaterThan>
+  <DataVersion>1</DataVersion>
+  <UserInterfaceVersion>1</UserInterfaceVersion>
+</Addin>

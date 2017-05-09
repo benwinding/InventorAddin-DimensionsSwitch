@@ -98,12 +98,12 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChainToOrdButton.cs" />
-    <Compile Include="OrdToChainButton.cs" />
+    <Compile Include="Buttons\ChainToOrdButton.cs" />
+    <Compile Include="Buttons\OrdToChainButton.cs" />
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Button.cs" />
+    <Compile Include="Buttons\Button.cs" />
     <Compile Include="StandardAddInServer.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -112,24 +112,22 @@
     <None Include="ChangeDimensionSets.X.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Autodesk.ChangeDimensionSets.Inventor.addin">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Readme.txt" />
+    <None Include="Autodesk.ChangeDimensionSets.Inventor.addin" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="btn-chain-to-ord.ico" />
     <EmbeddedResource Include="btn-ord-to-chain.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReferenceDDLs\Autodesk.Inventor.Interop.dll" />
+    <Content Include="ReferenceDDLs\stdole.dll" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>call "$(DevEnvDir)..\Tools\vsvars32.bat"
-mt.exe -manifest "$(ProjectDir)ChangeDimensionSets.X.manifest" -outputresource:"$(TargetPath)";#2
-XCopy "$(TargetPath)" "%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\" /Y /R
-XCopy "$(ProjectDir)Autodesk.ChangeDimensionSets.Inventor.addin" "%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\" /Y /R</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

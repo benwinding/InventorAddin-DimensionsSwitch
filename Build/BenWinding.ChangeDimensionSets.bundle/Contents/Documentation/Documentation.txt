@@ -1,0 +1,9 @@
+---------------------------------------
+Drawing Dimension-Set COnverter
+---------------------------------------
+
+This app is simply a toolbar addin which allows you to change between the linear dimension sets in Autodesk® Inventor® Drawings. The specific features are:
+
+Convert an 'ordinate set' dimension to a 'chain set' dimension
+Convert an 'chain set' dimension to a 'ordinate set' dimension
+Convert groups of dimensions at once!

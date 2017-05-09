@@ -2,7 +2,9 @@ using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using InvAddIn.Buttons;
 using Inventor;
+using Button = InvAddIn.Buttons.Button;
 
 namespace InvAddIn
 {
